@@ -9,20 +9,42 @@
     <packaging>pom</packaging>
     <version>1.0.0</version>
     <modules>
-        <module>lowcode-platform-tenant</module>
         <module>lowcode-platform-bpm</module>
         <module>lowcode-platform-gateway</module>
-        <module>lowcode-platform-ui</module>
-        <module>lowcode-platform-datasource</module>
-        <module>lowcode-platform-mdm</module>
-        <module>lowcode-platform-page</module>
-        <module>lowcode-platform-idaas</module>
-        <module>lowcode-platform-data</module>
+        <module>lowcode-platform-authing</module>
+        <module>lowcode-platform-oss</module>
+        <module>lowcode-platform-im</module>
+        <module>lowcode-platform-notify</module>
+        <module>lowcode-platform-engine</module>
+        <module>lowcode-platform-job</module>
+        <module>lowcode-platform-import-export</module>
+        <module>lowcode-platform-apicenter</module>
     </modules>
-
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
-
+    <dependencyManagement>
+        <dependencies>
+            <!--Spring Cloud 相关依赖-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-dependencies</artifactId>-->
+<!--                <version>${spring-cloud.version}</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>com.alibaba.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
+<!--                <version>${spring-cloud-alibaba.version}</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
