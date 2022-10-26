@@ -9,7 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lowcode-platform-idaas</artifactId>
+    <artifactId>lowcode-service</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>lowcode-bpm-service</module>
+        <module>lowcode-im-service</module>
+        <module>lowcode-engine-service</module>
+        <module>lowcode-oss-service</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
