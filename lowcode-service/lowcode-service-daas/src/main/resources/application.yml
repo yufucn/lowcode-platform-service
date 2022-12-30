@@ -1,0 +1,16 @@
+spring:
+  main:
+    allow-circular-references: true
+  # 数据库连接配置
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/test?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+          username: root
+          password: root
+#  flyway:
+#    locations: classpath:db/migration
+#    locations: s3:flyway/db/migration
