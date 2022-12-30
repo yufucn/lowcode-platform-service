@@ -19,7 +19,7 @@
         <module>lowcode-framework</module>
     </modules>
     <properties>
-<!--        <camunda.spring-boot.version>7.17.0</camunda.spring-boot.version>-->
+        <camunda.spring-boot.version>7.17.0</camunda.spring-boot.version>
         <spring.cloud.version>2021.0.4</spring.cloud.version>
         <spring.cloud.alibaba.version>2021.0.4.0</spring.cloud.alibaba.version>
         <maven.compiler.source>8</maven.compiler.source>
@@ -28,6 +28,9 @@
         <hibernate-validator.version>6.1.6.Final</hibernate-validator.version>
         <org.keycloak.version>20.0.0</org.keycloak.version>
         <org.jboss.resteasy.version>6.2.1.Final</org.jboss.resteasy.version>
+        <software.amazon.awssdk.version>2.19.4</software.amazon.awssdk.version>
+        <org.flywaydb.version>7.15.0</org.flywaydb.version>
+        <com.baomidou.version>3.4.1</com.baomidou.version>
     </properties>
     <dependencies>
         <dependency>
@@ -63,6 +66,26 @@
                 <groupId>org.hibernate.validator</groupId>
                 <artifactId>hibernate-validator</artifactId>
                 <version>${hibernate-validator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>s3</artifactId>
+                <version>${software.amazon.awssdk.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-core</artifactId>
+                <version>${org.flywaydb.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${com.baomidou.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.yufucn</groupId>
+                <artifactId>lowcode-framework-core</artifactId>
+                <version>${version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
