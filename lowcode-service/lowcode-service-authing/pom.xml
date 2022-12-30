@@ -21,11 +21,11 @@
             <artifactId>resteasy-jackson2-provider</artifactId>
             <version>${org.jboss.resteasy.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-dependencies-server-all</artifactId>
-            <type>pom</type>
-            <version>${org.keycloak.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.keycloak</groupId>-->
+<!--            <artifactId>keycloak-dependencies-server-all</artifactId>-->
+<!--            <type>pom</type>-->
+<!--            <version>${org.keycloak.version}</version>-->
+<!--        </dependency>-->
     </dependencies>
 </project>
