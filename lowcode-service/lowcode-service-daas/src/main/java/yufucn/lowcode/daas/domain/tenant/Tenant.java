@@ -1,6 +1,7 @@
 package yufucn.lowcode.daas.domain.tenant;
 
 import lombok.*;
+import yufucn.lowcode.ddd.domain.entities.auditing.FullAuditedEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,11 +17,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Tenant {
-    @Id
-    @Size(max = 32)
-    private String id;
-
+public class Tenant extends FullAuditedEntity<Long> {
     @Size(max = 64)
     private String name;
 }
