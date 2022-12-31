@@ -1,11 +1,10 @@
 package yufucn.lowcode.daas.domain.datasource;
 
 import lombok.*;
-import yufucn.lowcode.ddd.domain.entities.AbstractBaseEntity;
-import yufucn.lowcode.ddd.domain.entities.AbstractBaseEntityKey;
-import yufucn.lowcode.multitenancy.IMultiTenant;
+import yufucn.lowcode.ddd.domain.entities.auditing.FullAuditedEntity;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.Size;
 
 /**
  * @author wang
@@ -17,20 +16,7 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class DataSource extends AbstractBaseEntityKey<Long> implements IMultiTenant {
-
-    @Override
-    public Object[] getKeys() {
-        return new Object[0];
-    }
-
-    @Override
-    public Long id() {
-        return null;
-    }
-
-    @Override
-    public String getTenantId() {
-        return null;
-    }
+public class DataSource extends FullAuditedEntity<Long> {
+    @Size(max = 64)
+    private String name;
 }
