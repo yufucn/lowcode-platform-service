@@ -1,19 +1,20 @@
 package yufucn.lowcode.daas.application;
 
 import org.springframework.data.jpa.domain.Specification;
+import yufucn.lowcode.daas.application.dtos.DataSourceDto;
 import yufucn.lowcode.daas.domain.datasource.DataSource;
 import yufucn.lowcode.daas.domain.datasource.DataSourceRepository;
-import yufucn.lowcode.ddd.application.services.CrudAppService;
+import yufucn.lowcode.ddd.application.contracts.dtos.PagedAndSortedResultRequestDto;
+import yufucn.lowcode.ddd.application.services.CrudSimpleAppService;
 
 /**
  * @author wang
  * @date 2023/1/1 0:08
  */
-public class DataSourceAppService  extends CrudAppService<
+public class DataSourceAppService  extends CrudSimpleAppService<
+        Long,
         DataSource,
-        DataSource,
-        DataSource,
-        Long,DataSource,DataSource,DataSource> {
+        DataSourceDto> {
 
     private DataSourceRepository repository;
 
@@ -21,28 +22,24 @@ public class DataSourceAppService  extends CrudAppService<
         super(repository);
 
     }
+
     @Override
-    public DataSource mapToEntity(DataSource dataSource) {
+    public DataSource mapToEntity(DataSourceDto dataSourceDto) {
         return null;
     }
 
     @Override
-    public void mapToEntity(DataSource dataSource, DataSource dataSource2) {
+    public void mapToEntity(DataSourceDto dataSourceDto, DataSource dataSource) {
 
     }
 
     @Override
-    public DataSource mapToGetOutputDto(DataSource dataSource) {
+    public DataSourceDto mapToGetOutputDto(DataSource dataSource) {
         return null;
     }
 
     @Override
-    public DataSource mapToGetListOutputDto(DataSource dataSource) {
-        return null;
-    }
-
-    @Override
-    public Specification<DataSource> createFilteredQuery(DataSource dataSource) {
+    public Specification<DataSource> createFilteredQuery(PagedAndSortedResultRequestDto pagedAndSortedResultRequestDto) {
         return null;
     }
 }

@@ -14,10 +14,12 @@ import yufucn.lowcode.ddd.application.contracts.dtos.PagedAndSortedResultRequest
 import yufucn.lowcode.ddd.application.contracts.dtos.PagedResultDto;
 import yufucn.lowcode.ddd.application.contracts.dtos.PagedResultRequestDto;
 import yufucn.lowcode.ddd.application.contracts.services.ICrudAppService;
+import yufucn.lowcode.ddd.domain.entities.AbstractBaseEntityKey;
 import yufucn.lowcode.ddd.domain.repositories.IRepository;
 
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
 
 /**
  * @author wang
@@ -27,18 +29,18 @@ import javax.persistence.MappedSuperclass;
 @Getter
 @Setter
 public abstract class CrudAppService<
-        TEntity,
+        TKey extends Serializable,
+        TEntity extends AbstractBaseEntityKey<TKey>,
         TGetOutputDto,
         TGetListOutputDto,
-        TKey,
         TGetListInput,
         TCreateInput,
         TUpdateInput>
-        implements ICrudAppService<TGetOutputDto, TGetListOutputDto, TKey, TGetListInput, TCreateInput, TUpdateInput> {
+        implements ICrudAppService<TKey, TGetOutputDto, TGetListOutputDto, TGetListInput, TCreateInput, TUpdateInput> {
 
     private IRepository<TEntity, TKey> repository;
 
-    public CrudAppService(IRepository<TEntity, TKey> repository){
+    public CrudAppService(IRepository<TEntity, TKey> repository) {
         this.repository = repository;
     }
 
