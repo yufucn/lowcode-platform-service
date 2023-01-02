@@ -8,7 +8,7 @@ import yufucn.lowcode.ddd.application.contracts.dtos.PagedResultDto;
  * @author wang
  * @date 2022/12/31 20:48
  */
-public interface IReadOnlyAppService <TGetOutputDto, TGetListOutputDto, TKey, TGetListInput> {
+public interface IReadOnlyAppService <TKey, TGetOutputDto, TGetListOutputDto, TGetListInput> {
     TGetOutputDto get(TKey id);
     Page<TGetListOutputDto> getList(TGetListInput input);
 }
