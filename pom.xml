@@ -31,12 +31,18 @@
         <software.amazon.awssdk.version>2.19.4</software.amazon.awssdk.version>
         <org.flywaydb.version>7.15.0</org.flywaydb.version>
         <com.baomidou.version>3.4.1</com.baomidou.version>
+        <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${org.mapstruct.version}</version>
         </dependency>
     </dependencies>
     <dependencyManagement>
