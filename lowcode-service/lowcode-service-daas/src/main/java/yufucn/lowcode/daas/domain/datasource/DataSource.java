@@ -15,7 +15,6 @@ import javax.validation.constraints.Size;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class DataSource extends FullAuditedEntity<Long> {
     @Size(max = 64)
     private String name;
