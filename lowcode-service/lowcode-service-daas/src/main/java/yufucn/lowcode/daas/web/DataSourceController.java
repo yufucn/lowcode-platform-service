@@ -1,6 +1,8 @@
 package yufucn.lowcode.daas.web;
 
 import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import yufucn.lowcode.daas.application.DataSourceAppService;
@@ -23,7 +25,13 @@ public class DataSourceController {
     }
 
     @PostMapping("/datasource")
-    public Page<DataSourceDto> list(PagedAndSortedResultRequestDto pagedAndSortedResultRequestDto){
-       return dataSourceAppService.getList(pagedAndSortedResultRequestDto);
+    public Page<DataSourceDto> list(PagedAndSortedResultRequestDto pagedAndSortedResultRequestDto) {
+        return dataSourceAppService.getList(pagedAndSortedResultRequestDto);
+    }
+
+    @DeleteMapping("/datasource/{id}")
+    public Boolean delete(@PathVariable Long id) {
+        dataSourceAppService.delete(id);
+        return true;
     }
 }

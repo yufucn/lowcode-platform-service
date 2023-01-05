@@ -21,30 +21,10 @@ public class DataSourceAppService extends CrudSimpleAppService<
         DataSourceDto> {
 
     private DataSourceRepository repository;
-    private final IMapper<DataSource,DataSourceDto,DataSourceDto,DataSourceDto,DataSourceDto>
-            dataSourceConvert = DataSourceConvert.INSTANCE;
-
 
     public DataSourceAppService(DataSourceRepository repository) {
-        super(repository);
+        super(repository, DataSourceConvert.INSTANCE);
 
-    }
-
-    @Override
-    public DataSource mapToEntity(DataSourceDto dataSourceDto) {
-        return
-                dataSourceConvert.mapToEntity(dataSourceDto);
-    }
-
-    @Override
-    public void mapToEntity(DataSourceDto dataSourceDto, DataSource dataSource) {
-        dataSourceConvert.mapToEntity(dataSourceDto, dataSource);
-    }
-
-    @Override
-    public DataSourceDto mapToGetOutputDto(DataSource dataSource) {
-
-        return dataSourceConvert.mapToGetOutputDto(dataSource);
     }
 
     @Override

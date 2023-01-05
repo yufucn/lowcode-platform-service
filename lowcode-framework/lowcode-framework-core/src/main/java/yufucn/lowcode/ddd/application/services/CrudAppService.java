@@ -14,6 +14,7 @@ import yufucn.lowcode.ddd.application.contracts.dtos.PagedAndSortedResultRequest
 import yufucn.lowcode.ddd.application.contracts.dtos.PagedResultDto;
 import yufucn.lowcode.ddd.application.contracts.dtos.PagedResultRequestDto;
 import yufucn.lowcode.ddd.application.contracts.services.ICrudAppService;
+import yufucn.lowcode.ddd.application.convert.IMapper;
 import yufucn.lowcode.ddd.domain.entities.AbstractBaseEntityKey;
 import yufucn.lowcode.ddd.domain.repositories.IRepository;
 
@@ -26,8 +27,6 @@ import java.io.Serializable;
  * @date 2022/12/31 22:33
  */
 @MappedSuperclass
-@Getter
-@Setter
 public abstract class CrudAppService<
         TKey extends Serializable,
         TEntity extends AbstractBaseEntityKey<TKey>,
@@ -38,10 +37,13 @@ public abstract class CrudAppService<
         TUpdateInput>
         implements ICrudAppService<TKey, TGetOutputDto, TGetListOutputDto, TGetListInput, TCreateInput, TUpdateInput> {
 
-    private IRepository<TEntity, TKey> repository;
+    private final IRepository<TEntity, TKey> repository;
+    private final IMapper<TEntity, TGetOutputDto, TGetListOutputDto, TCreateInput, TUpdateInput> mapper;
 
-    public CrudAppService(IRepository<TEntity, TKey> repository) {
+    public CrudAppService(IRepository<TEntity, TKey> repository,
+                          IMapper<TEntity, TGetOutputDto, TGetListOutputDto, TCreateInput, TUpdateInput> mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
@@ -97,13 +99,21 @@ public abstract class CrudAppService<
         return PageRequest.of(page, size, sort);
     }
 
-    public abstract TEntity mapToEntity(TCreateInput createInput);
+    public TEntity mapToEntity(TCreateInput createInput) {
+        return mapper.mapToEntity(createInput);
+    }
 
-    public abstract void mapToEntity(TUpdateInput updateInput, TEntity entity);
+    public void mapToEntity(TUpdateInput updateInput, TEntity entity) {
+        mapper.mapToEntity(updateInput, entity);
+    }
 
-    public abstract TGetOutputDto mapToGetOutputDto(TEntity entity);
+    public TGetOutputDto mapToGetOutputDto(TEntity entity){
+        return mapper.mapToGetOutputDto(entity);
+    }
 
-    public abstract TGetListOutputDto mapToGetListOutputDto(TEntity entity);
+    public TGetListOutputDto mapToGetListOutputDto(TEntity entity){
+        return mapper.mapToGetListOutputDto(entity);
+    }
 
     public abstract Specification<TEntity> createFilteredQuery(TGetListInput tGetListInput);
 }

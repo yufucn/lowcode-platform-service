@@ -1,9 +1,0 @@
-yufucn.lowcode.auditing
-yufucn.lowcode.ddd.application.contracts.dtos
-yufucn.lowcode.ddd.application.contracts.services
-yufucn.lowcode.ddd.application.convert
-yufucn.lowcode.ddd.application.services
-yufucn.lowcode.ddd.domain.entities
-yufucn.lowcode.ddd.domain.entities.auditing
-yufucn.lowcode.ddd.domain.repositories
-yufucn.lowcode.multitenancy

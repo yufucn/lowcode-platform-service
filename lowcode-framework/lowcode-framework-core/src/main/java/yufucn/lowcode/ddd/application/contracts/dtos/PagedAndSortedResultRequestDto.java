@@ -18,7 +18,7 @@ public class PagedAndSortedResultRequestDto extends PagedResultRequestDto {
 
     public Sort buildSort() {
         switch (direction) {
-            case "dsc":
+            case "desc":
                 return Sort.by(key).descending();
             case "asc":
                 return Sort.by(key).ascending();

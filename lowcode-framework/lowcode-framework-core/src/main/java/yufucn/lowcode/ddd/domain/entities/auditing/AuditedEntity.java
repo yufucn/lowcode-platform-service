@@ -16,7 +16,6 @@ import java.util.Date;
 @MappedSuperclass
 @Getter
 @Setter
-@NoArgsConstructor
 public abstract class AuditedEntity <TKey extends Serializable> extends CreationAuditedEntity<TKey> {
     private Date lastModificationTime;
     @Size(max = 32)
