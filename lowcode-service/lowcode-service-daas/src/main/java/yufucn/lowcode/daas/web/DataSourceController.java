@@ -1,11 +1,9 @@
 package yufucn.lowcode.daas.web;
 
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import yufucn.lowcode.daas.application.DataSourceAppService;
+import yufucn.lowcode.daas.application.dtos.DataSourceCreateDto;
 import yufucn.lowcode.daas.application.dtos.DataSourceDto;
 import yufucn.lowcode.ddd.application.contracts.dtos.PagedAndSortedResultRequestDto;
 
@@ -25,6 +23,11 @@ public class DataSourceController {
     }
 
     @PostMapping("/datasource")
+    public DataSourceDto create(DataSourceCreateDto input) {
+        return dataSourceAppService.create(input);
+    }
+
+    @GetMapping("/datasource")
     public Page<DataSourceDto> list(PagedAndSortedResultRequestDto pagedAndSortedResultRequestDto) {
         return dataSourceAppService.getList(pagedAndSortedResultRequestDto);
     }

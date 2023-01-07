@@ -14,6 +14,7 @@
     <modules>
         <module>lowcode-framework-core</module>
         <module>lowcode-framework-common</module>
+        <module>lowcode-framework-starter-web</module>
     </modules>
 
     <properties>

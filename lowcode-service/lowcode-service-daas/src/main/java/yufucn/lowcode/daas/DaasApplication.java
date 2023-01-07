@@ -1,9 +1,10 @@
 package yufucn.lowcode.daas;
 
 import org.flywaydb.core.api.configuration.S3ClientFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
@@ -15,7 +16,9 @@ import java.net.URI;
  * @author wang
  * @date 2022/12/28 23:00
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "yufucn.lowcode")
+@EnableJpaAuditing
+@EnableJpaRepositories
 public class DaasApplication {
 
     public static void main(String[] args) {

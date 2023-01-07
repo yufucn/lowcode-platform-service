@@ -15,4 +15,5 @@ public interface IDetailCreateMapper<
         TEntityDto,
         TCreateInput,
         TCreateInput> {
+
 }

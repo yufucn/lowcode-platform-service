@@ -33,6 +33,7 @@
         <com.baomidou.version>3.4.1</com.baomidou.version>
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
         <org.projectlombok.version>1.18.16</org.projectlombok.version>
+        <com.alibaba.fastjson.version>1.2.83</com.alibaba.fastjson.version>
     </properties>
     <dependencies>
         <dependency>
@@ -109,6 +110,16 @@
                 <groupId>org.yufucn</groupId>
                 <artifactId>lowcode-framework-core</artifactId>
                 <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.yufucn</groupId>
+                <artifactId>lowcode-framework-starter-web</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${com.alibaba.fastjson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

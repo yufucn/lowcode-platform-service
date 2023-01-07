@@ -5,7 +5,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -18,9 +20,10 @@ import java.util.Date;
 @MappedSuperclass
 @Getter
 @Setter
-@SQLDelete(sql = "update #{#entityName} set is_deleted=true where id=?")
-@Where(clause = "is_deleted = false")
-public abstract class FullAuditedEntity <TKey extends Serializable> extends AuditedEntity<TKey> {
+@EntityListeners(value = {AuditingEntityListener.class})
+public abstract class FullAuditedEntity <TKey extends Serializable>
+        extends AuditedEntity<TKey> {
+
     private Boolean isDeleted;
     @Size(max = 32)
     private String deleterId;
