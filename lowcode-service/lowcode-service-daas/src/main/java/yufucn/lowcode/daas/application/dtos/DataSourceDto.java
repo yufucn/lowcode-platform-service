@@ -1,10 +1,9 @@
 package yufucn.lowcode.daas.application.dtos;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import yufucn.lowcode.ddd.application.contracts.dtos.EntityDto;
+import yufucn.lowcode.ddd.application.contracts.dtos.FullAuditedEntityDto;
 
 /**
  * @author wang
@@ -12,8 +11,7 @@ import yufucn.lowcode.ddd.application.contracts.dtos.EntityDto;
  */
 @Setter
 @Getter
-@Builder
 @AllArgsConstructor
-public class DataSourceDto extends EntityDto<Long> {
+public class DataSourceDto extends FullAuditedEntityDto<Long> {
     private String name;
 }

@@ -17,7 +17,6 @@ import java.io.Serializable;
 @MappedSuperclass
 @Getter
 @Setter
-@NoArgsConstructor
 public abstract class AbstractBaseEntityKey<TKey extends Serializable>  implements Serializable {
 
     @Id

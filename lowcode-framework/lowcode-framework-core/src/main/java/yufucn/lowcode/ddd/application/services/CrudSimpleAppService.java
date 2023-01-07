@@ -3,6 +3,7 @@ package yufucn.lowcode.ddd.application.services;
 import lombok.Getter;
 import lombok.Setter;
 import yufucn.lowcode.ddd.application.contracts.dtos.PagedAndSortedResultRequestDto;
+import yufucn.lowcode.ddd.application.convert.ISimpleMapper;
 import yufucn.lowcode.ddd.domain.entities.AbstractBaseEntityKey;
 import yufucn.lowcode.ddd.domain.repositories.IRepository;
 
@@ -14,8 +15,6 @@ import java.io.Serializable;
  * @date 2023/1/1 15:24
  */
 @MappedSuperclass
-@Getter
-@Setter
 public abstract class CrudSimpleAppService<
         TKey extends Serializable,
         TEntity extends AbstractBaseEntityKey<TKey>,
@@ -25,7 +24,10 @@ public abstract class CrudSimpleAppService<
         TEntity,
         TEntityDto,
         PagedAndSortedResultRequestDto> {
-    public CrudSimpleAppService(IRepository<TEntity, TKey> repository) {
-        super(repository);
+    private ISimpleMapper<TEntity, TEntityDto> mapper;
+
+    public CrudSimpleAppService(IRepository<TEntity, TKey> repository,
+                                ISimpleMapper<TEntity, TEntityDto> mapper) {
+        super(repository, mapper);
     }
 }
