@@ -7,7 +7,7 @@ import yufucn.lowcode.daas.domain.datasource.DataSource;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-01-07T14:54:14+0800",
+    date = "2023-01-08T14:20:21+0800",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 1.8.0_211 (Oracle Corporation)"
 )
 public class DataSourceConvertImpl implements DataSourceConvert {
