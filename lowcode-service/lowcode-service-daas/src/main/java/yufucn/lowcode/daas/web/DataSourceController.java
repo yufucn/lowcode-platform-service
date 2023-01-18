@@ -1,12 +1,12 @@
 package yufucn.lowcode.daas.web;
 
-import com.baomidou.dynamic.datasource.DynamicRoutingDataSource;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import yufucn.lowcode.daas.application.DataSourceAppService;
+import yufucn.lowcode.daas.application.IFlywayAppService;
 import yufucn.lowcode.daas.application.dtos.DataSourceCreateDto;
 import yufucn.lowcode.daas.application.dtos.DataSourceDto;
 import yufucn.lowcode.ddd.application.contracts.dtos.PagedAndSortedResultRequestDto;
@@ -22,19 +22,19 @@ public class DataSourceController {
 
     private final DataSourceAppService dataSourceAppService;
 
-    private final DataSource  dataSource;
+    private final IFlywayAppService flywayAppService;
 
-    public DataSourceController(DataSourceAppService dataSourceAppService, DataSource dataSource) {
+    public DataSourceController(DataSourceAppService dataSourceAppService,
+                                IFlywayAppService flywayAppService) {
         this.dataSourceAppService = dataSourceAppService;
-        this.dataSource = dataSource;
+        this.flywayAppService = flywayAppService;
     }
 
     @PostMapping("/datasource")
     public DataSourceDto create(@Validated @RequestBody DataSourceCreateDto input) {
-        DataSourceProperty property = new DataSourceProperty();
-        BeanUtils.copyProperties(input, property);
-        DynamicRoutingDataSource ds = (DynamicRoutingDataSource) dataSource;
-        return dataSourceAppService.create(input);
+        DataSourceDto result =  dataSourceAppService.create(input);
+        flywayAppService.create(input.getUrl(),input.getUsername(),input.getPassword());
+        return result;
     }
 
     @GetMapping("/datasource")
