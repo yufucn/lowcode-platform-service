@@ -1,13 +1,17 @@
 package yufucn.lowcode.daas.web;
 
+import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import yufucn.lowcode.daas.application.DataSourceAppService;
+import yufucn.lowcode.daas.application.IFlywayAppService;
 import yufucn.lowcode.daas.application.dtos.DataSourceCreateDto;
 import yufucn.lowcode.daas.application.dtos.DataSourceDto;
 import yufucn.lowcode.ddd.application.contracts.dtos.PagedAndSortedResultRequestDto;
 
-import java.util.List;
+import javax.sql.DataSource;
 
 /**
  * @author wang
@@ -18,13 +22,19 @@ public class DataSourceController {
 
     private final DataSourceAppService dataSourceAppService;
 
-    public DataSourceController(DataSourceAppService dataSourceAppService) {
+    private final IFlywayAppService flywayAppService;
+
+    public DataSourceController(DataSourceAppService dataSourceAppService,
+                                IFlywayAppService flywayAppService) {
         this.dataSourceAppService = dataSourceAppService;
+        this.flywayAppService = flywayAppService;
     }
 
     @PostMapping("/datasource")
-    public DataSourceDto create(DataSourceCreateDto input) {
-        return dataSourceAppService.create(input);
+    public DataSourceDto create(@Validated @RequestBody DataSourceCreateDto input) {
+        DataSourceDto result =  dataSourceAppService.create(input);
+        flywayAppService.create(input.getUrl(),input.getUsername(),input.getPassword());
+        return result;
     }
 
     @GetMapping("/datasource")

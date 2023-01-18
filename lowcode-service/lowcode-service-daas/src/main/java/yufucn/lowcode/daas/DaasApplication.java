@@ -26,7 +26,7 @@ public class DaasApplication {
                 .credentialsProvider(StaticCredentialsProvider.create(
                         AwsBasicCredentials.create("xZwChZGYdNCSZSsx", "d70mOeIoRplZqEkqIvgRJndTh9Rm7kiV")))
                 .endpointOverride(URI.create("http://localhost:9000"))
-//                .serviceConfiguration(item -> item.pathStyleAccessEnabled(true).checksumValidationEnabled(false))
+                .serviceConfiguration(item -> item.pathStyleAccessEnabled(true).checksumValidationEnabled(false))
                 .region(Region.CN_NORTH_1)
                 .build();
         S3ClientFactory.setClient(s3Client);
