@@ -1,10 +1,9 @@
 package yufucn.lowcode.ddd.domain.entities.auditing;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.EntityListeners;
@@ -21,11 +20,14 @@ import java.util.Date;
 @Getter
 @Setter
 @EntityListeners(value = {AuditingEntityListener.class})
-public abstract class FullAuditedEntity <TKey extends Serializable>
-        extends AuditedEntity<TKey> {
+public abstract class FullAuditedEntity<TKey extends Serializable>
+        extends CreationAuditedEntity<TKey> implements SoftDelete {
 
-    private Boolean isDeleted;
+    private Integer deleted = 0;
+
+    @LastModifiedDate
+    private Date lastModificationTime;
     @Size(max = 32)
-    private String deleterId;
-    private Date deletionTime;
+    @LastModifiedBy
+    private String lastModifierId;
 }

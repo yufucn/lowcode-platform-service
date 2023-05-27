@@ -18,6 +18,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @Builder
 public class Tenant extends FullAuditedEntity<Long> {
+
     @Size(max = 64)
     private String name;
 }

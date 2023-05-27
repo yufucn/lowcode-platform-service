@@ -7,7 +7,7 @@ import yufucn.lowcode.daas.domain.datasource.DataSource;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-01-08T14:20:21+0800",
+    date = "2023-05-27T22:04:13+0800",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 1.8.0_211 (Oracle Corporation)"
 )
 public class DataSourceConvertImpl implements DataSourceConvert {
@@ -29,9 +29,6 @@ public class DataSourceConvertImpl implements DataSourceConvert {
         dataSourceDto.setCreatorId( entity.getCreatorId() );
         dataSourceDto.setLastModificationTime( entity.getLastModificationTime() );
         dataSourceDto.setLastModifierId( entity.getLastModifierId() );
-        dataSourceDto.setIsDeleted( entity.getIsDeleted() );
-        dataSourceDto.setDeleterId( entity.getDeleterId() );
-        dataSourceDto.setDeletionTime( entity.getDeletionTime() );
 
         return dataSourceDto;
     }
@@ -53,9 +50,6 @@ public class DataSourceConvertImpl implements DataSourceConvert {
         dataSourceDto.setCreatorId( entity.getCreatorId() );
         dataSourceDto.setLastModificationTime( entity.getLastModificationTime() );
         dataSourceDto.setLastModifierId( entity.getLastModifierId() );
-        dataSourceDto.setIsDeleted( entity.getIsDeleted() );
-        dataSourceDto.setDeleterId( entity.getDeleterId() );
-        dataSourceDto.setDeletionTime( entity.getDeletionTime() );
 
         return dataSourceDto;
     }

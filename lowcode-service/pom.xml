@@ -17,6 +17,7 @@
         <module>lowcode-service-job</module>
         <module>lowcode-service-authing</module>
         <module>lowcode-service-daas</module>
+        <module>lowcode-service-gateway</module>
     </modules>
 
     <dependencies>

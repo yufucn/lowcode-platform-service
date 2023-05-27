@@ -18,7 +18,7 @@ public class DataSourceCreateDto {
     @NotNull
     private String url;
     @NotNull
-    private String username;
+    private String userName;
     @NotNull
     private String password;
 }

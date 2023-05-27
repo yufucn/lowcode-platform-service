@@ -1,7 +1,5 @@
 package yufucn.lowcode.daas.web;
 
-import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
-import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -9,9 +7,9 @@ import yufucn.lowcode.daas.application.DataSourceAppService;
 import yufucn.lowcode.daas.application.IFlywayAppService;
 import yufucn.lowcode.daas.application.dtos.DataSourceCreateDto;
 import yufucn.lowcode.daas.application.dtos.DataSourceDto;
+import yufucn.lowcode.data.DataFilterServiceImpl;
 import yufucn.lowcode.ddd.application.contracts.dtos.PagedAndSortedResultRequestDto;
-
-import javax.sql.DataSource;
+import yufucn.lowcode.ddd.domain.entities.auditing.SoftDelete;
 
 /**
  * @author wang
@@ -24,16 +22,20 @@ public class DataSourceController {
 
     private final IFlywayAppService flywayAppService;
 
+    private DataFilterServiceImpl dataFilterService;
+
     public DataSourceController(DataSourceAppService dataSourceAppService,
-                                IFlywayAppService flywayAppService) {
+                                IFlywayAppService flywayAppService,
+                                DataFilterServiceImpl dataFilterService) {
         this.dataSourceAppService = dataSourceAppService;
         this.flywayAppService = flywayAppService;
+        this.dataFilterService = dataFilterService;
     }
 
     @PostMapping("/datasource")
     public DataSourceDto create(@Validated @RequestBody DataSourceCreateDto input) {
         DataSourceDto result =  dataSourceAppService.create(input);
-        flywayAppService.create(input.getUrl(),input.getUsername(),input.getPassword());
+        flywayAppService.create(input.getUrl(),input.getUserName(),input.getPassword());
         return result;
     }
 
@@ -42,8 +44,25 @@ public class DataSourceController {
         return dataSourceAppService.getList(pagedAndSortedResultRequestDto);
     }
 
+    @GetMapping("/datasource/{id}")
+    public DataSourceDto get(@PathVariable Long id) {
+
+//        DataSourceDto result =  dataSourceAppService.get(id);
+//        System.out.println("disable");
+//        System.out.println(result.toString());
+        dataFilterService.disable(SoftDelete.class);
+        DataSourceDto result =  dataSourceAppService.get(id);
+        System.out.println("enable");
+        System.out.println(result.toString());
+        dataFilterService.enable(SoftDelete.class);
+
+        result =  dataSourceAppService.get(id);
+        return result;
+    }
+
     @DeleteMapping("/datasource/{id}")
     public Boolean delete(@PathVariable Long id) {
+
         dataSourceAppService.delete(id);
         return true;
     }

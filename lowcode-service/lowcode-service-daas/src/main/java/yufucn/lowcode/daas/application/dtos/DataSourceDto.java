@@ -3,6 +3,7 @@ package yufucn.lowcode.daas.application.dtos;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import yufucn.lowcode.ddd.application.contracts.dtos.FullAuditedEntityDto;
 
 /**
@@ -11,6 +12,7 @@ import yufucn.lowcode.ddd.application.contracts.dtos.FullAuditedEntityDto;
  */
 @Setter
 @Getter
+@ToString
 @AllArgsConstructor
 public class DataSourceDto extends FullAuditedEntityDto<Long> {
     private String name;
