@@ -3,11 +3,9 @@ package yufucn.lowcode.ddd.domain.entities;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Version;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -21,5 +19,8 @@ public abstract class AbstractBaseEntityKey<TKey extends Serializable>  implemen
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected TKey id;
+    private TKey id;
+
+    @Version
+    private Long version;
 }
